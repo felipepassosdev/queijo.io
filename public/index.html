@@ -21,8 +21,18 @@
         const socket = io('http://localhost:3000')
         // const chat = document.querySelector("#chat")
         function renderMessage(message){
-            $('.message').append('<div class="message"><strong>'+ message.author +'</strong>: '+ message.message +'</div>')
+            $('.messages').append('<div class="message"><div class="x" style=" background: -webkit-linear-gradient(left,rgba(23,103,239,.85),rgba(20,196,251,.85)); color: #fff; border-radius: 50px;font-size: 20px; width: 382px;"><strong>'+ message.author +'</strong>: '+ message.message +'</div></div>')
         }
+
+        socket.on('previousMessages', function(messages){
+           for(message of messages) {
+               renderMessage(message)
+           }
+        })
+
+        socket.on('receivedMessage', function(message){
+            renderMessage(message)
+        }) // ouvir
 
         $('#chat').submit(function(event){
             event.preventDefault()

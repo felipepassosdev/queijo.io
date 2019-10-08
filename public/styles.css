@@ -44,3 +44,6 @@ html, body {
     border: 1px solid #ddd;
     padding: 20px;
   }
+  .x {
+    background: -webkit-linear-gradient(left,rgba(23,103,239,.85),rgba(20,196,251,.85));
+  }

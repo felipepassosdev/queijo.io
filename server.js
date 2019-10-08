@@ -20,8 +20,13 @@ io.on('connection', socket =>
 {
     console.log(`Socket conectado: ${socket.id}`)
 
+    socket.emit('previousMessages', messages)
+
     socket.on('sendMessage', data => {
         messages.push(data)
+
+        socket.broadcast.emit('receivedMessage', data)
+        // emit é pra aquele socket e broadcast emit é para todos os sockets
         console.log(messages)
     })
 })
