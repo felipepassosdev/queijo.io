@@ -22,6 +22,7 @@ io.on('connection', socket =>
 
     socket.on('sendMessage', data => {
         messages.push(data)
+        console.log(messages)
     })
 })
 
