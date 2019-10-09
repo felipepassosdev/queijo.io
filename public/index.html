@@ -20,7 +20,7 @@
 
 <body>
     <form id="chat">
-        <h5>Queijo.io 🧀</h5>
+        <h1>Queijo.io 🧀</h1>
         <input type="text" name="username" placeholder="usuario">
         <div class="messages">
 
@@ -41,9 +41,9 @@
             }
         })
 
-        socket.on('receivedMessage', function (message) {
-            renderMessage(message)
-        }) // ouvir
+        // socket.on('receivedMessage', function (message) {
+        //     renderMessage(message)
+        // }) // ouvir
 
         $('#chat').submit(function (event) {
             event.preventDefault()
@@ -60,8 +60,8 @@
                 renderMessage(messageObject)
 
                 socket.emit('sendMessage', messageObject)
-                scroll()
             }
+            scroll()
         });
 
         function scroll() {
