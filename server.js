@@ -30,9 +30,7 @@ io.on('connection', socket =>
         console.log(messages)
     })
 })
-
-
 // server.listen(3000)
 
-var porta = process.env.PORT || 8080;
+var porta = process.env.PORT || 8080; //ahhh
 app.listen(porta);
