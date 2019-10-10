@@ -29,7 +29,7 @@
         <button type="submit">Enviar</button>
     </form>
     <script>
-        const socket = io('https://queijo-io.herokuapp.com/')
+        const socket = io('http://localhost:3000/')
         // const chat = document.querySelector("#chat")
         const renderMessage = (message) =>{
             $('.messages').append('<div class="message"><div class="x" style="padding: 14px; margin-bottom: 10px; background: -webkit-linear-gradient(left,rgba(23,103,239,.85),rgba(20,196,251,.85)); color: #fff; border-radius: 20px;font-size: 20px; width: 451px"><strong>' + message.author + '</strong>: ' + message.message + '</div></div>')
@@ -41,9 +41,9 @@
             }
         })
 
-        // socket.on('receivedMessage', function (message) {
-        //     renderMessage(message)
-        // }) // ouvir
+        socket.on('receivedMessage', function (message) {
+            renderMessage(message)
+        }) // ouvir
 
         $('#chat').submit(function (event) {
             event.preventDefault()
@@ -61,7 +61,6 @@
 
                 socket.emit('sendMessage', messageObject)
             }
-            scroll()
         });
 
         const scroll = () => {
