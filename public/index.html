@@ -41,9 +41,9 @@
             }
         })
 
-        // socket.on('receivedMessage', function (message) {
-        //     renderMessage(message)
-        // }) // ouvir
+        socket.on('receivedMessage', function (message) {
+            renderMessage(message)
+        }) // ouvir
 
         $('#chat').submit(function (event) {
             event.preventDefault()
